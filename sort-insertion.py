@@ -11,7 +11,8 @@ print (a)
 for i in range(1,len(a)):
     print ("i is ", i)
     #print ("\n")
-    for j in reversed(range(0,i+1)): ''' To optimize insertion sort, compare element with previous element, to achieve this use j in reversed range as shown above '''
+    for j in reversed(range(0,i+1)): 
+''' To optimize insertion sort, compare element with previous element, to achieve this use j in reversed range as shown above '''
         print ("j is", j)
         if (j>0 and a[j]<a[j-1]):
             temp=a[j]
@@ -26,12 +27,11 @@ for i in range(1,len(a)):
 ('j is', 4)
 [1, 2, 4, 5, 7, 3]
 ('j is', 3)
-here j is 3rd index which is 5 , since 5 >4 (previous element) , previous list already in sorted so breaking the j loop
+here j is 3rd index which is 5 , since 5 >4 (previous element) , previous list already in sorted so breaking the j loop , Thatswhy j exited at 3rd index , so there is no 2nd or 1st index 
+why break here ?
+breaking j loop, since no need to compare other elements
 
-         why break here ?
-          breaking j loop, since no need to compare other elements
-
-          if a[j] is not less than a[j-1]) ie previous element is lesser than current element , no need to compare again with previous to previous why becoz its alredy sorted 
+if a[j] is not less than a[j-1]) ie previous element is lesser than current element , no need to compare again with previous to previous why becoz its alredy sorted 
 
 [7, 2, 4, 1, 5, 3]
 ('i is ', 1)
@@ -71,7 +71,7 @@ here j is 3rd index which is 5 , since 5 >4 (previous element) , previous list a
 [1, 2, 3, 4, 5, 7]
 
 '''
-    print (a)
+print (a)
 
             
 print (a)
