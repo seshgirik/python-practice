@@ -27,7 +27,7 @@ for i in range(1,len(a)):
 ('j is', 4)
 [1, 2, 4, 5, 7, 3]
 ('j is', 3)
-here jth rd index element is 5, since 5 >4 (previous element) , previous list already in sorted so breaking the j loop , Thatswhy j exited at 3rd index , so there is no 2nd or 1st index 
+here jth 3rd index element is 5, since 5 >4 (previous element) , previous list already in sorted so breaking the j loop , Thatswhy j exited at 3rd index , so there is no 2nd or 1st index 
 why break here ?
 breaking j loop, since no need to compare other elements
 
