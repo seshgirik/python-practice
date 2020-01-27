@@ -1,0 +1,465 @@
+#Copyright Jon Berg , turtlemeat.com
+
+import socket
+import random
+import time
+import string,cgi
+import os 
+from SocketServer import BaseServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from OpenSSL import SSL
+import json
+import ConfigParser
+
+Config = ConfigParser.ConfigParser()
+queryFileName = "queryJson.json"
+postFileName = "postJson.json"
+getFileName = "getJson.json"
+f400 = '400.json'
+returncode = "http://10.69.22.156:8082/reg_srv?code=d91bc6f297f6265299591df87926fdcfbfe8a1a167c6743767d7508d543fd821"
+returncode1 = "http://10.69.22.151:8082/reg_srv?code=d91bc6f297f6265299591df87926fdcfbfe8a1a167c6743767d7508d543fd821"
+f403 = '403.json'
+f400_3 = '400_3.json'
+f400_21 = '400_21.json'
+f400_46 = '400_46.json'
+f400_40 = '400_40.json'
+f400_6 = '400_6.json'
+f400_invalid_request = '400_invalid_request.json'
+f400_invalid_client = '400_invalid_client.json'
+f400_unauthorized_client = '400_unauthorized_client.json'
+f400_unsupported_grant_type = '400_unsupported_grant_type.json'
+f403_21 = '403_21.json'
+f403_26 = '403_26.json'
+f403_400 = '403_400.json'
+f401 = '401.json'
+f500 = '500_1.json'
+#g_number = 918212849675
+
+g_number = 918230001250
+imsi_number = 405874800001250
+
+g_user = "stuser10"
+
+getPath = "/sdc/v1/profiles?userId="
+
+postPath = "/sdc/v1/profiles/token"
+sdcpostPath = "/sdc/v1/profiles/authorization/"
+sdcpostPath1 = "/sdc/ucc/v1/profiles/authorization"
+postValPath = "/sdc/v2/token"
+getRedirect = "/iam"
+getPermission = "permission-management/v1/permissions"
+codeList = []
+code2TokenDict = {}
+tokenList = []
+token2impu = {}
+impulist =[]
+impuCount=0
+impufile = open('impuist.txt', 'r')
+for eachline in impufile:
+	impulist.append(eachline)
+	impuCount = impuCount+1
+totalImpus = impuCount
+print 'Total impus is:'+ str(totalImpus)
+#    Name = ConfigSectionMap("ResponsetoSendBack")['errorcode']
+def ConfigSectionMap(section):
+    dict1 = {}
+    options = Config.options(section)
+    for option in options:
+        try:
+            dict1[option] = Config.get(section, option)
+            if dict1[option] == -1:
+                DebugPrint("skip: %s" % option)
+        except:
+            print("exception on %s!" % option)
+            dict1[option] = None
+    return dict1
+
+class SecureHTTPServer(HTTPServer):
+    def __init__(self, server_address, HandlerClass):
+        BaseServer.__init__(self, server_address, HandlerClass)
+        ctx = SSL.Context(SSL.SSLv23_METHOD)
+        #server.pem's location (containing the server private key and
+        #the server certificate).
+        fpem = 'server.pem'
+        ctx.use_privatekey_file (fpem)
+        ctx.use_certificate_file(fpem)
+        self.socket = SSL.Connection(ctx, socket.socket(self.address_family,self.socket_type))
+        self.server_bind()
+        self.server_activate()
+        global mycount
+        mycount  = totalImpus-1
+class MyHandler(SimpleHTTPRequestHandler):
+    def setup(self):
+        self.connection = self.request
+        self.rfile = socket._fileobject(self.request, "rb", self.rbufsize)
+        self.wfile = socket._fileobject(self.request, "wb", self.wbufsize)
+        
+
+    def do_GET(self):
+        try:
+            path = self.path
+            paths = path.split('?')
+	    authcode = self.headers.get('Authorization')
+            print authcode
+            Config.read("config.cfg")
+            ['config.cfg']
+            Config.sections()
+            ['Others', 'ResponsetoSendBack', 'HeaderCheck', 'BodyCheck']
+	    flag = 1
+	    Name = ConfigSectionMap("ResponsetoSendBack")['errorcode']
+	    subName = ConfigSectionMap("ResponsetoSendBack")['suberrorcode']
+	    Authorization = ConfigSectionMap("HeaderCheck")['authorization']
+	    RedirectPath = ConfigSectionMap("Others")['path']
+            print 'authorization from config---->'+Authorization
+            print 'sub error ---->'+subName
+            print 'path ---->'+path
+            if getPath in path :
+				print 'Authorization from request---->'+authcode
+				tmpToken = authcode.replace('Bearer','');
+				print 'token in Get is:'+tmpToken
+				global mycount
+				print 'mycount 1:',mycount
+				print mycount
+				if mycount == -1:
+					mycount = totalImpus -1
+				if tmpToken in token2impu:
+					impu = token2impu[tmpToken]
+				else:
+					impu = impulist[mycount]
+					token2impu[tmpToken]=impu
+	     			mycount = mycount - 1
+				print 'mycount 2:',mycount
+				f = open(getFileName,"r")
+				print "[" + impu +"]"
+				impu = impu.replace('\n','');
+				lines = impu.split(',');
+				newimpu = lines[0]
+				newimpi = lines[1]
+				print 'New IMPU IMPI'
+				print "[" + newimpu + " "+ newimpi +"]"
+				getFileContent = f.read();
+				global g_number
+				global imsi_number
+				g_number = g_number + 1 if g_number<918230001256 else g_number - 5
+				imsi_number = imsi_number + 1 if imsi_number<405874800001256 else imsi_number - 5
+				getFileContent = getFileContent.replace('918212849675',str(g_number))
+				getFileContent = getFileContent.replace('818212849675',str(imsi_number))
+				getFileContent = getFileContent.replace('stuser01',g_user)
+				getFileContent = getFileContent.replace('123',newimpu)
+				getFileContent = getFileContent.replace('456',newimpi)
+				self.send_response(200)
+				self.send_header('Content-type',	'application/json;charset=UTF-8')
+				self.send_header('Connection',	'close')
+				self.send_header ("Content-Length", len(getFileContent))
+				self.end_headers()
+				print getFileContent
+				self.wfile.write(getFileContent)
+				f.close()
+            else : 
+#path == getPermission:
+                print 'Ashutosh Shukla'
+                f5 = open("getPermission.json",'r');
+                getFileContent = f5.read();
+                self.send_response(200);
+                self.send_header('Content-type',    'application/json;charset=UTF-8');
+                self.send_header('Connection',  'close');
+                self.send_header ("Content-Length", len(getFileContent));
+                self.end_headers();
+                print getFileContent;
+                self.wfile.write(getFileContent);
+                f5.close();
+	    return
+#	    elif paths[0] == getRedirect:
+#                self.send_response(302)
+#                self.send_header('Content-type',    'text/html;charset=UTF-8')
+#                aCode = random.randint(10, 100)  
+#                if codeList.count(aCode) == 0:
+#                   codeList.append(aCode)
+#                finalPath = RedirectPath + str(aCode)          
+#                self.send_header('Location',  finalPath)
+#                self.send_header('Connection',  'close')
+#                self.end_headers()
+#            else:
+#	           if Name == '400':
+#			if subName == '':
+#				f1 = open(f400, "r")
+#			elif subName == '3':
+#				f1 = open(f400_3, "r")
+#			elif subName == '21':
+#				f1 = open(f400_21, "r")
+#			elif subName == '46':
+#				f1 = open(f400_46, "r")
+#			elif subName == '6':
+#				f1 = open(f400_6, "r")
+#			elif subName == '40':
+#				f1 = open(f400_40, "r")
+#			else:
+#				flag = 0
+#		   elif Name == '403':
+#			if subName == '':
+#				f1 = open(f403, "r")
+#			elif subName == '21':
+#				f1 = open(f403_21, "r")
+#			elif subName == '26':
+#				f1 = open(f403_26, "r")
+#			elif subName == '400':
+#				f1 = open(f403_400, "r")
+#			else:
+#				flag = 0
+#		   elif Name == '500':
+#				f1 = open(f500, "r")
+#		   elif Name == '401':
+#				f1 = open(f401,"r")
+#		   else:
+#			flag = 0
+#		   self.send_response(int(Name))
+#            	   self.send_header('Content-type',	'application/json;charset=UTF-8')
+#            	   self.send_header('Connection',	'close')
+#           	   self.end_headers()
+#		   if flag:
+#		   	self.wfile.write(f1.read())
+#		   	f1.close
+#	    return
+	except IOError:
+            self.send_error(404,'File Not Found: %s' % self.path)
+
+    def do_POST(self):
+        try:
+	    path = self.path
+	    #time.sleep(5)
+	    authcode = self.headers.get('Authorization')
+	    print 'profileauthorization ---> '+authcode
+	    length = self.headers.get('Content-Length')
+            if self.rfile:
+	    	data = self.rfile.read(int(length))
+		datas = data.split(',')
+		dataslen = len(datas)
+		print 'Request ---> '+self.path
+		print 'No of datas ---> '+ str(dataslen)
+		print 'data ---> '+data
+#		print 'data1 ---> '+datas["userId"]
+#		print 'data1 ---> '+datas["userId"]
+#		print 'data1 ---> '+datas[0]
+#		print 'data2 ---> '+datas[1]
+		print 'data3 ---> '+datas[1]
+		print 'data3 ---> '+datas[1]
+		print 'passcode ---> '+datas[2].split(":")[-1]
+		replacement=datas[1].split(":")[-1].replace("\"","")
+		print 'replacement ---> '+replacement
+		passcode=datas[2].split(":")[-1]
+		print 'passcode ---> '+passcode
+		if "lvn1" in passcode:
+			returnclientcode=returncode1.replace("d821",replacement) 
+		else:
+			returnclientcode=returncode.replace("d821",replacement) 
+				
+		
+		#returnclientcode=returncode+datas[1].split(":")[-1]
+		#returnclientcode=returncode+"1250"
+		#returnclientcode=returncode+str(replacement)
+		#returncode.replace("d821","123456")
+		print 'returncdoe ---> '+returncode
+		print 'returnclientcdoe ---> '+returnclientcode
+#		grand_val = datas[0].split('=')
+#		code = datas[1].split('=')
+#		redirect_uri = datas[2].split('=')
+#		print 'grand_val len ---> '+str(str(len(grand_val)))
+#		#request = json.loads(data)
+#                print 'grant_val ---> '+grand_val[1]
+#                print 'code ---> '+code[1]
+#                print 'redirect_uri ---> '+redirect_uri[1]
+#		#return
+#          
+#		['config.cfg']
+#		Config.sections()
+#		['Others', 'ResponsetoSendBack', 'HeaderCheck', 'BodyCheck']
+#		flag = 1
+#		Name = ConfigSectionMap("ResponsetoSendBack")['errorcode']
+#		subName = ConfigSectionMap("ResponsetoSendBack")['suberrorcode']	
+#		clientID = ConfigSectionMap("BodyCheck")['code']
+#		grant_type = ConfigSectionMap("BodyCheck")['grant_type']
+#		Authorization = ConfigSectionMap("HeaderCheck")['profileauthorization']
+#		print 'Suberrorcode ---> '+subName
+#		print 'Code ---> '+clientID
+#		print 'Grant type ---> '+grant_type
+#		print 'profileauthorization ---> '+Authorization
+		#if path == (sdcpostPath1 | sdcpostPath):
+		if path == sdcpostPath1 or path == sdcpostPath:
+			 print "sdc autchode "
+			 #f1 = open(f400_unauthorized_client,"r")
+			 self.send_response(303)
+ 			 #self.send_header('Location',	'http://10.69.22.156:8082/reg_srv?code=d91bc6f297f6265299591df87926fdcfbfe8a1a167c6743767d7508d543fd821')
+ 			 self.send_header('Location',	returnclientcode)
+			 self.end_headers()
+ 			 #self.send_header('Content-type',	'text/json')
+		     #self.send_header('Location',	'wleocme')
+		     #self.send_header('Location',	'http://10.69.22.156:8082/reg_srv?code=d91bc6f2fbfe8a1a167c6743767d7508d543fd821')
+			 #f1.close()
+	
+		if path == postPath:
+		 if clientID == '45':
+			print "I am coming here"
+			if Authorization == 'Basic YWJjOmFiYw==':
+				if grant_type == grand_val[1]:
+							print "I am here"
+							file = open(postFileName,"r") 
+							self.send_response(200)
+							self.send_header('Content-type',	'text/json')
+							self.send_header('Connection',	'close')
+#							self.send_header ("Content-Length", os.path.getsize(postFileName)+4)
+#							self.end_headers()
+#							if access_token[1] != "":
+#								print "Token not empty"
+#								aToken = access_token[1]
+#							elif code[1] in code2TokenDict:
+#								print "Dong know why here"
+#								aToken = code2TokenDict[code[1]]
+#							if  code[1] in code2TokenDict:
+#								print "Dong know why here"
+#								aToken = code2TokenDict[code[1]]
+#							else:
+							aTokenCode = random.randint(1000,2000);
+							print "Setting new token\n"
+							aToken = '2YotnFZFEjr1zCsicMWpAA'+str(aTokenCode)
+							code2TokenDict[code[1]]=aToken
+							fileContent = file.read();
+							fileContent = fileContent.replace('2YotnFZFEjr1zCsicMWpAA',aToken)
+							global g_user
+							t_num = g_user[6:]
+							t_num = int(t_num) + 1
+							g_user = "stuser"+str(t_num)
+							print ">>>>>>g_user", g_user
+							print fileContent
+							fileContent = fileContent.replace('stuser01',g_user)
+							print fileContent
+							self.send_header ("Content-Length", len(fileContent))
+							self.end_headers()
+							self.wfile.write(fileContent)
+							file.close()
+				else:
+                                                        print "refresh token request received"
+							file = open(postFileName,"r") 
+							self.send_response(200)
+							self.send_header('Content-type',	'text/json')
+							self.send_header('Connection',	'close')
+#							self.send_header ("Content-Length", os.path.getsize(postFileName)+4)
+#							self.end_headers()
+#							if access_token[1] != "":
+#								print "Token not empty"
+#								aToken = access_token[1]
+#							elif code[1] in code2TokenDict:
+#								print "Dong know why here"
+#								aToken = code2TokenDict[code[1]]
+#							if  code[1] in code2TokenDict:
+#								print "Dong know why here"
+#								aToken = code2TokenDict[code[1]]
+#							else:
+							aTokenCode = random.randint(1000,2000);
+							print "Setting new token\n"
+							aToken = '2YotnFZFEjr1zCsicMWpAA'+str(aTokenCode)
+							code2TokenDict[code[1]]=aToken
+							fileContent = file.read();
+							fileContent = fileContent.replace('2YotnFZFEjr1zCsicMWpAA',aToken)
+							global g_user
+							t_num = g_user[6:]
+							t_num = int(t_num) + 1
+							g_user = "stuser"+str(t_num)
+							print ">>>>>>g_user", g_user
+							print fileContent
+							fileContent = fileContent.replace('stuser01',g_user)
+							print fileContent
+							self.send_header ("Content-Length", len(fileContent))
+							self.end_headers()
+							self.wfile.write(fileContent)
+							file.close()
+#				else:
+#					f1 = open(f400_unsupported_grant_type,"r")
+#					self.send_response(400)
+#					self.send_header('Content-type',	'text/json')
+#					self.send_header('Connection',	'close')
+#					self.end_headers()
+#					self.wfile.write(f1.read())
+#					f1.close()
+#
+
+			else:
+				f1 = open(f400_unauthorized_client,"r")
+				self.send_response(400)
+				self.send_header('Content-type',	'text/json')
+				self.send_header('Connection',	'close')
+				self.end_headers()
+				self.wfile.write(f1.read())
+				f1.close()
+		 else:
+			f1 = open(f400_invalid_client,"r")
+			self.send_response(400)
+			self.send_header('Content-type',	'text/json')
+			self.send_header('Connection',	'close')
+			self.end_headers()
+			self.wfile.write(f1.read())
+			f1.close()
+		else:
+		 if Name == '400':
+			if subName == None:
+				f1 = open(f400, "r")
+			elif subName == '3':
+				f1 = open(f400_3, "r")
+			elif subName == '21':
+				f1 = open(f400_21, "r")
+			elif subName == '46':
+				f1 = open(f400_46, "r")
+			elif subName == '6':
+				f1 = open(f400_6, "r")
+			elif subName == '40':
+				f1 = open(f400_40, "r")
+			else:
+				flag = 0
+		 elif Name == '403':
+			if subName == None:
+				f1 = open(f403, "r")
+			elif subName == '21':
+				f1 = open(f403_21, "r")
+			elif subName == '26':
+				f1 = open(f403_26, "r")
+			elif subName == '400':
+				f1 = open(f403_400, "r")
+			else:
+				flag = 0
+		 elif Name == '500':
+				f1 = open(f500, "r")
+		 elif Name == '401':
+				f1 = open(f401,"r")
+		 else:
+			flag = 0
+		 self.send_response(int(Name))
+		 self.send_header('Content-type' , 'application/json;charset=UTF-8')
+		 self.send_header('Connection' , 'close')
+		 self.end_headers()
+		 if flag:
+		   	self.wfile.write(f1.read())
+		   	f1.close	
+            return
+                
+        except IOError:
+            self.send_error(404,'File Not Found: %s' % self.path)
+class HTTPServerV6(HTTPServer):
+  address_family = socket.AF_INET6
+  global mycount
+  mycount  = totalImpus-1
+def main():
+    try:
+        #server = HTTPServerV6(('', 8082), MyHandler)
+        #server = HTTPServerV6(('', 445), MyHandler)
+        server = HTTPServer(('', 5566), MyHandler)
+        #server = SecureHTTPServer(('', 4451), MyHandler)
+        print 'started httpserver...'
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print '^C received, shutting down server'
+        server.socket.close()
+
+if __name__ == '__main__':
+    main()
+
+
