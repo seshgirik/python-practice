@@ -1,0 +1,11 @@
+{
+"requesterror":
+    {
+ "policyexception":
+        {
+ "messageId":"POL0001",
+ "text":"A Policy error occurred. Error code is %1.",
+ "variables":["26"]
+		}
+	}
+}

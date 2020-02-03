@@ -1,0 +1,11 @@
+SVC exception:
+{
+    "requestError": 
+    {
+        "serviceException": 
+        {
+            "messageId": "SVC0001",
+            "text": "A service error occurred. Error code is %1",
+            "variables": "1"
+        }
+}

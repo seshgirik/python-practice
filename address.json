@@ -1,0 +1,38 @@
+{  
+      "contact": {  
+            "contactId":"sam",
+            "attributeList":{  
+               "attribute":[  
+                  {  
+                     "name":"display-name",
+                     "value":"Sam"
+                  },
+                  {  
+                     "name":"given-name",
+                     "value":"Sam"
+                  },
+                  {  
+                     "name":"middle-name",
+                     "value":"Samuel"
+                  },
+                  {  
+                     "name":"family-name",
+                     "value":"Bloggs"
+                  },
+                  {  
+                     "name":"home-mobile",
+                     "value":"tel:+19585550108"
+                  },
+	     {  
+                     "name":"work-mobile",
+                     "value":"tel:+19585550101"
+                  },
+	     {  
+                     "name":"other-mobile",
+                     "value":"tel:+19585550102"
+                  }
+               ]
+            }
+         }
+} 
+

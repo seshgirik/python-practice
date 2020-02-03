@@ -1,0 +1,9 @@
+{
+"access_token":"2YotnFZFEjr1zCsicMWpAA1800",
+"token_type":"bearer",
+"expires_in":3600,
+"scope":"webrtc",
+"user_id":"stuser01",
+"refresh_token":"943b0891-1aac-488d-9eca-89bb40e55cfe",
+"device_id":"urn:uuid:c10bab27-92e1-3dcc-b768-075762555209"
+}

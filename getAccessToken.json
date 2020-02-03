@@ -1,0 +1,9 @@
+{
+	"client_id": "client_28892@partner",
+	"owner_id": "user_0",
+	"scope": "dummySMS",
+	"expires_in": 359,
+	"scope_ex": {
+		"dummySMS": []
+	}
+}

@@ -1,0 +1,377 @@
+{
+  "implicitPermissions": [
+    {
+      "user": {
+        "IAMEmail": "tmodev11@mailinator.com",
+        "userid": "U-53bc63fe-9d1b-48ab-b962-d14bac6eb22f",
+        "username": "tmodev11"
+      },
+      "lines": [
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001250",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001250",
+          "permissionType": "inherited"
+        },
+
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001251",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001251",
+          "permissionType": "inherited"
+        },
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001252",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001252",
+          "permissionType": "inherited"
+        },
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001257",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001257",
+          "permissionType": "inherited"
+        },
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001253",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001253",
+          "permissionType": "inherited"
+        },
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001254",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001254",
+          "permissionType": "inherited"
+        },
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001255",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001255",
+          "permissionType": "inherited"
+        },
+ 
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001256",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001256",
+          "permissionType": "inherited"
+        },
+ 
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001213",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001213",
+          "permissionType": "inherited"
+        },
+ 
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001214",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001214",
+          "permissionType": "inherited"
+        },
+ 
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001215",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001215",
+          "permissionType": "inherited"
+        },
+ 
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001216",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001216",
+          "permissionType": "inherited"
+        },
+ 
+
+
+
+
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001217",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001217",
+          "permissionType": "inherited"
+        },
+ 
+        {
+          "accountStatus": "A",
+          "ban": "905003",
+          "customerType": "PAH",
+          "imsi": "405874800001218",
+          "isLineGrantable": "true",
+          "isPrimaryMSISDN": "false",
+          "msisdn": "918230001218",
+          "permissionType": "inherited"
+        }
+
+      ]
+    }
+  ],
+    "explicitPermissions": [
+		
+
+        {
+            "grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someone57x@ericsson.com",
+            "msisdn": "tel:+14256601356",
+            "imsi": "14256601356",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "john1@ericsson.com",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+       },
+
+        {
+            "grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someone55x@ericsson.com",
+            "msisdn": "tel:+14256601355",
+            "imsi": "14256601355",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "john1@ericsson.com",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+       },
+
+        {
+            "grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someone59x@ericsson.com",
+            "msisdn": "tel:+14256601359",
+            "imsi": "14256601359",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "john1@ericsson.com",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+       },
+
+
+
+
+		{
+			"grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "",
+            "msisdn": "tel:14256601191",
+            "imsi": "14256601191",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "john@ericsson.com",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+       },
+
+		{
+			"grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someone8x@ericsson.com",
+            "msisdn": "tel:14256601192",
+            "imsi": "14256601192",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "john1@ericsson.com",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+       },
+
+
+        {
+            "grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someone8@ericsson.com",
+            "msisdn": "tel:+14256601171",
+            "imsi": "14256601171",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2Zxytxnrer9",
+            "granteeEmail": "",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+        },
+        {
+            "grantor": "userid:U-2Zxytxnhz45",
+            "grantorEmail": "someone9@ericsson.com",
+            "msisdn": "tel:+14256601172",
+            "imsi": "14256601172",
+            "isPrimaryMSISDN": "true",
+            "givenName": "David",
+            "grantee": "userid:U-2Zxytxn44rf",
+            "granteeEmail": "alison@ericsson.com",
+            "serviceName": "VoLTE",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue3,attributeValue4"
+        },
+		{
+            "grantor": "userid:U-2Zxytxnhz50",
+            "grantorEmail": "someoneMT8@Mitel.com",
+            "msisdn": "tel:+19843022233",
+            "imsi": "19843022233",
+            "isPrimaryMSISDN": "true",
+            "givenName": "Jason",
+            "grantee": "userid:U-2ZxytxnMTrer9",
+            "granteeEmail": "",
+            "serviceName": "SMS",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue1,attributeValue2"
+        },
+        {
+            "grantor": "userid:U-2Zxytxnhz45",
+            "grantorEmail": "someoneMT9@Mitel.com",
+            "msisdn": "tel:+19843022205",
+            "imsi": "19843022205",
+            "isPrimaryMSISDN": "true",
+            "givenName": "David",
+            "grantee": "userid:U-2ZxytxMTn44rf",
+            "granteeEmail": "alison@Mitel.com",
+            "serviceName": "VoLTE",
+            "state": "E",
+            "isPermissionExpired": "false",
+            "grantedPrivilege": "Full",
+            "grantedTimestamp": "yyyyMMddHHmmssZ",
+            "startTimestamp": "yyyyMMddHHmmssZ",
+            "endTimestamp": "yyyyMMddHHmmssZ",
+            "lastUpdatedTimestamp": "yyyyMMddHHmmssZ",
+            "serviceAttributes": "attributeValue3,attributeValue4"
+        }
+    ]
+}
