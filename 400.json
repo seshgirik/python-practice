@@ -1,4 +1,5 @@
 {
-    "error":"invalid_request2",    
+<<<<<<< HEAD
+    "error":"invalid_request2",
     "error_description":"The request is missing ..."
 }
