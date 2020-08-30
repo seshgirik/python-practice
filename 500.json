@@ -6,6 +6,7 @@ SVC exception:
         {
             "messageId": "SVC0001",
             "text": "A service error occurred. Error code is %1",
+            "variables": "3"
             "variables": "5"
         }
 }
