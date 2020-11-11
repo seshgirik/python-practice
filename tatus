@@ -214,4 +214,9 @@ Author: Seshagiri Kondaveti <seshagiri.kondaveti@mavenir.com>
 Date:   Sun Jan 12 20:14:40 2020 +0530
 
     insertion sort
+<<<<<<< HEAD
     addred remotely
+=======
+    locally added
+
+>>>>>>> added locally
