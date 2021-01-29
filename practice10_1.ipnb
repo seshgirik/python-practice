@@ -1,0 +1,1233 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "sorted",
+     "max"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "import operator\n",
+    "\n",
+    "list1=[{'name':'rama' , 'spouse':'sita','brother':'laxman'} , {'name':'sita' , 'spouse':'rama','brother':'hanuma'}]\n",
+    "\n",
+    "sorted(list1,key=lambda x:x['spouse'])\n",
+    "\n",
+    "sorted(list1,key=operator.itemgetter('name','spouse'))\n",
+    "\n",
+    "\n",
+    "class student:\n",
+    "    def __init__(self,name,section):\n",
+    "        self.name=name\n",
+    "        self.section=section\n",
+    "ram=student('ram','c')\n",
+    "sita=student('sita','x')\n",
+    "laxman=student('laxman','a')\n",
+    "hanuman=student('hanuman','z')\n",
+    "\n",
+    "list1=[ram,sita,laxman,hanuman]\n",
+    "list2=sorted(list1,key=operator.attrgetter('name','section'))\n",
+    "for obj in list2:\n",
+    "    print(f'{obj.name} , {obj.section}  ')\n",
+    "    \n",
+    "max(list1,key=operator.attrgetter('name','section')).name"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{0, 2, 4, 6, 8}\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "{4, 6, 8}"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "list1= [i for i in range(10)]\n",
+    "list1\n",
+    "list2=set(filter(lambda x:x%2==0,list1))\n",
+    "print(list2)\n",
+    "list2.remove(2)\n",
+    "list2\n",
+    "list2.pop()\n",
+    "list2\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['__add__',\n",
+       " '__class__',\n",
+       " '__contains__',\n",
+       " '__delattr__',\n",
+       " '__dir__',\n",
+       " '__doc__',\n",
+       " '__eq__',\n",
+       " '__format__',\n",
+       " '__ge__',\n",
+       " '__getattribute__',\n",
+       " '__getitem__',\n",
+       " '__getnewargs__',\n",
+       " '__gt__',\n",
+       " '__hash__',\n",
+       " '__init__',\n",
+       " '__init_subclass__',\n",
+       " '__iter__',\n",
+       " '__le__',\n",
+       " '__len__',\n",
+       " '__lt__',\n",
+       " '__mul__',\n",
+       " '__ne__',\n",
+       " '__new__',\n",
+       " '__reduce__',\n",
+       " '__reduce_ex__',\n",
+       " '__repr__',\n",
+       " '__rmul__',\n",
+       " '__setattr__',\n",
+       " '__sizeof__',\n",
+       " '__str__',\n",
+       " '__subclasshook__',\n",
+       " 'count',\n",
+       " 'index']"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nums=(1,2,3,4,5)\n",
+    "dir(nums)\n",
+    "# next(nums.__iter__())\n",
+    "# next(nums.__iter__())\n",
+    "#next(nums)\n",
+    "#nums[0]=100"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<list_iterator object at 0x0000023791BCA048>\n",
+      "<list_iterator object at 0x0000023791BCA048>\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nums=[1,2,3,4,5,6]\n",
+    "i_nums=nums.__iter__()\n",
+    "i_nums=iter(nums)\n",
+    "print(i_nums)\n",
+    "print(i_nums.__iter__())\n",
+    "dir(i_nums)\n",
+    "next(i_nums)\n",
+    "next(i_nums)\n",
+    "next(i_nums)\n",
+    "next(i_nums)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 2, 4, 6, 8]"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "nums = [i for i in range(10)]\n",
+    "odd=lambda x:bool(x%2==0)\n",
+    "nums\n",
+    "nums[:]=[i for i in nums if odd(i)]\n",
+    "nums\n",
+    "\n",
+    "list( filter(lambda x:x%2==0,nums) )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[4, 4, 4, 4, 4]"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def multi():\n",
+    "    return [lambda x: i*x for i in range(5)]\n",
+    "\n",
+    "val=multi()\n",
+    "[i(10) for i in val]\n",
+    "\n",
+    "\n",
+    "def multi():\n",
+    "    return [lambda : i for i in range(5)]\n",
+    "\n",
+    "val=multi()\n",
+    "[i() for i in val]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "def multi():\n",
+    "    return [lambda x,i=i: i*x for i in range(5)]\n",
+    "\n",
+    "val=multi()\n",
+    "[i(10) for i in val]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n",
+      "default vlaue assigned\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "dict_items([(0, [0]), (1, [1]), (2, [2]), (3, [3]), (4, [4]), (5, [5]), (6, [6]), (7, [7]), (8, [8]), (9, [9])])"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import defaultdict\n",
+    "\n",
+    "def fun():\n",
+    "    print(f'default vlaue assigned')\n",
+    "    return []\n",
+    "\n",
+    "dict=defaultdict(fun)   # we should give fun only fun() doen't work\n",
+    "\n",
+    "for i in range(10):\n",
+    "    dict[i].append(i)\n",
+    "dict.items()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[['a', 'a1', 'a2'], ['b', 'b1', 'b2'], ['c', 'c1', 'c2']]"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "list1=[['a', 'b','c'], ['a1', 'b1','c1'], ['a2', 'b2','c2']]\n",
+    "\n",
+    "transpose=[]\n",
+    "for element in list(zip(*list1)):\n",
+    "    transpose.append(list(element))\n",
+    "transpose"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 4, 5, 6, 7, 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Quick sort\n",
+    "\n",
+    "\n",
+    "list1=[7,2,1,6,8,5,3,4]\n",
+    "\n",
+    "def partition(list1,start,end):\n",
+    "    \n",
+    "    partitionIndex=start\n",
+    "    pivot=list1[end]\n",
+    "    \n",
+    "    for j in range(start,end):\n",
+    "        if list1[j] <pivot:\n",
+    "            list1[partitionIndex],list1[j]=list1[j],list1[partitionIndex]\n",
+    "            partitionIndex+=1\n",
+    "            \n",
+    "#     list1.insert(i+1,list1.pop())\n",
+    "    #print(f' list is {list1} , pivot is {list1[i+1]}')\n",
+    "    list1[end],list1[partitionIndex]=list1[partitionIndex],list1[end]\n",
+    "    return partitionIndex\n",
+    "    \n",
+    "#partition(list1,0,len(list1))\n",
+    "\n",
+    "  \n",
+    "def quick_sort(list1,start,end):\n",
+    "    \n",
+    "    if start<end:\n",
+    "    \n",
+    "        pindex=partition(list1,start,end)\n",
+    "        quick_sort(list1,start,pindex-1)\n",
+    "        quick_sort(list1,pindex+1,end)\n",
+    "\n",
+    "\n",
+    "quick_sort(list1,0,7)\n",
+    "print(list1)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 4, 5, 6, 7, 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "def partition(A,start,end):\n",
+    "    pivot=A[end]\n",
+    "    pindex=start\n",
+    "    for i in range(start,end):\n",
+    "        if A[i]<pivot:\n",
+    "            A[i],A[pindex]=A[pindex],A[i]\n",
+    "            pindex+=1\n",
+    "    A[end],A[pindex]=A[pindex],A[end]\n",
+    "    return pindex\n",
+    "\n",
+    "def quick_sort(A,start,end):\n",
+    "    if start<end:\n",
+    "        pindex=partition(A,start,end)\n",
+    "        quick_sort(A,start,pindex-1)\n",
+    "        quick_sort(A,pindex+1,end)\n",
+    "        \n",
+    "A=[7,2,1,6,8,5,3,4]\n",
+    "quick_sort(A,0,7)\n",
+    "print(A)\n",
+    "        \n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 44]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#insertion sorting\n",
+    "\n",
+    "def insertion_sort(A):\n",
+    "    \n",
+    "    for i in range(1,len(A)):\n",
+    "        \n",
+    "        while i>0 :\n",
+    "        \n",
+    "            if A[i]<A[i-1]:\n",
+    "                \n",
+    "                A[i],A[i-1]=A[i-1],A[i]\n",
+    "\n",
+    "            i=i-1\n",
+    "  \n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "insertion_sort(A)\n",
+    "print(A)  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "A=[1,2,11]\n",
+    "B=[4,8,9]\n",
+    "C=[]\n",
+    "\n",
+    "while A and B:\n",
+    "    \n",
+    "    for i in range(len(A)):\n",
+    "        if A[i] <B[i]:\n",
+    "            C.append(A.pop(i))\n",
+    "        else:\n",
+    "            C.append(B.pop(i))\n",
+    "        break\n",
+    "    \n",
+    "    \n",
+    "if A:\n",
+    "    C.extend(A)\n",
+    "if B:\n",
+    "    C.extend(B)\n",
+    "C"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def partition(A,start,end):\n",
+    "    \n",
+    "    pivot =A[end]\n",
+    "    pindex=start\n",
+    "    for i in range(start,end):\n",
+    "        \n",
+    "        if A[i]<pivot:\n",
+    "            A[i],A[pindex]=A[pindex],A[i]\n",
+    "            pindex+=1\n",
+    "            \n",
+    "    A[pindex],A[end]=A[end],A[pindex]\n",
+    "    print(f'{A} and pindex is {pindex}')\n",
+    "    return pindex\n",
+    "\n",
+    "\n",
+    "def quick_sort(A,start,end):\n",
+    "    \n",
+    "    if start<end:\n",
+    "        \n",
+    "        pindex=partition(A,start,end)\n",
+    "        quick_sort(A,start,pindex-1)\n",
+    "        quick_sort(A,pindex+1,end)\n",
+    "\n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "quick_sort(A,0,9)\n",
+    "\n",
+    "print(A)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "A is [7, 0, 2, 1, 6, 8, 5, 3, 44, 4]\n",
+      "A is [7, 0, 2, 1, 6]\n",
+      "A is [7, 0]\n",
+      "list1 [0, 7] \n",
+      "A is [2, 1, 6]\n",
+      "A is [2]\n",
+      "list1 [2] \n",
+      "A is [1, 6]\n",
+      "list2 is [1, 6]\n",
+      "list 3 is [1, 2, 6]\n",
+      "list2 is [1, 2, 6]\n",
+      "list 3 is [0, 1, 2, 6, 7]\n",
+      "list1 [0, 1, 2, 6, 7] \n",
+      "A is [8, 5, 3, 44, 4]\n",
+      "A is [8, 5]\n",
+      "list1 [5, 8] \n",
+      "A is [3, 44, 4]\n",
+      "A is [3]\n",
+      "list1 [3] \n",
+      "A is [44, 4]\n",
+      "list2 is [4, 44]\n",
+      "list 3 is [3, 4, 44]\n",
+      "list2 is [3, 4, 44]\n",
+      "list 3 is [3, 4, 5, 8, 44]\n",
+      "list2 is [3, 4, 5, 8, 44]\n",
+      "list 3 is [0, 1, 2, 3, 4, 5, 6, 7, 8, 44]\n",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 44]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def merge_sort(A):\n",
+    "    if len(A)>2:\n",
+    "        \n",
+    "        print(f'A is {A}')\n",
+    "        mid=int(len(A)/2)\n",
+    "#         print(A[0:mid])\n",
+    "#         print(A[mid:])\n",
+    "        list1=merge_sort(A[0:mid])\n",
+    "        print(f'list1 {list1} ')\n",
+    "        list2=merge_sort(A[mid:])\n",
+    "        print(f'list2 is {list2}')\n",
+    "        \n",
+    "        list3=[]\n",
+    "        while list1 and list2:\n",
+    "            for i in range(len(list1)):\n",
+    "                if list1[i]>list2[i]:\n",
+    "                    \n",
+    "                    list3.append(list2.pop(i))\n",
+    "                else:\n",
+    "                    list3.append(list1.pop(i))\n",
+    "                break\n",
+    "        if list1:\n",
+    "            list3.extend(list1)\n",
+    "        if list2:\n",
+    "            list3.extend(list2)\n",
+    "        print(f'list 3 is {list3}')\n",
+    "        return list3\n",
+    "        \n",
+    "    elif len(A)==1:\n",
+    "        print(f'A is {A}')\n",
+    "        return A\n",
+    "    elif len(A)==2:\n",
+    "        print(f'A is {A}')\n",
+    "        if A[0]>A[1]:\n",
+    "            A[0],A[1]=A[1],A[0]\n",
+    "        return A\n",
+    "    \n",
+    "    \n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "l1=merge_sort(A)\n",
+    "\n",
+    "print(l1)    \n",
+    "    \n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 44]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "#bubble sort\n",
+    "\n",
+    "\n",
+    "def bubble_sort(A):\n",
+    "    for i in range(len(A)):\n",
+    "        for j in range(i,len(A)-1):\n",
+    "            if A[j]>A[j+1]:\n",
+    "                A[j],A[j+1]=A[j+1],A[j]\n",
+    "                \n",
+    "    return A\n",
+    "    \n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "l1=bubble_sort(A)\n",
+    "\n",
+    "print(l1)  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "#selection sort\n",
+    "\n",
+    "\n",
+    "def selection_sort(A):\n",
+    "    for i in range(len(A)):\n",
+    "        for j in range(i,len(A)-1):\n",
+    "            if A[i]>A[j]:\n",
+    "                A[i],A[j]=A[j],A[i]\n",
+    "                \n",
+    "    return A\n",
+    "\n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "l1=selection_sort(A)\n",
+    "\n",
+    "print(l1)  \n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "#insertion sort\n",
+    "\n",
+    "\n",
+    "def insertion_sort(A):\n",
+    "    for i in range(1,len(A)):\n",
+    "        while i:\n",
+    "            \n",
+    "            if A[i]<A[i-1]:\n",
+    "                A[i],A[i-1]=A[i-1],A[i]\n",
+    "                \n",
+    "            i=i-1\n",
+    "            \n",
+    "    return A\n",
+    "\n",
+    "A=[7,0,2,1,6,8,5,3,44,4]\n",
+    "l1=insertion_sort(A)\n",
+    "\n",
+    "print(l1)  \n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "squares is [1, 4, 9, 25, 36]\n",
+      "[1, 4, 9, 25, 36]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "def square(x):\n",
+    "    return x*x\n",
+    "    \n",
+    "list1=[1,2,3,5,6]\n",
+    "\n",
+    "s=list(map(square, list1))\n",
+    "\n",
+    "print(f'squares is {s}')\n",
+    "\n",
+    "r=list(map(lambda x:x*x , list1))\n",
+    "print(r)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "rama : 100 : ayodhya\n",
+      "\n",
+      "laxman : 200 : midhila\n",
+      "\n",
+      "sita : 300 : hastina\n",
+      "\n",
+      "[('rama', 'ayodhya', 100), ('laxman', 'midhila', 200), ('sita', 'hastina', 300)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "names=['rama','laxman','sita']\n",
+    "places=['ayodhya','midhila','hastina']\n",
+    "ages=[100,200,300]\n",
+    "\n",
+    "for name,place,age in zip(names,places,ages):\n",
+    "    print(f'{name} : {age} : {place}\\n')\n",
+    "    \n",
+    "print(list(zip(names,places,ages)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "metadata": {
+    "tags": [
+     "cls",
+     "classmethod",
+     "staticmethod"
+    ]
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "welcome to static method\n",
+      "welcome to static method\n",
+      "welcome to static method\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Employee:\n",
+    "    \n",
+    "    def __init__(self,name,age,grade):\n",
+    "        self.name=name\n",
+    "        self.age=age\n",
+    "        self.grade=grade\n",
+    "        \n",
+    "    @classmethod\n",
+    "    def clsmethod(cls,string):\n",
+    "        name,age,grade=string.split('-')\n",
+    "        return cls(name,age,grade)\n",
+    "    \n",
+    "    @staticmethod\n",
+    "    def staticmethod():\n",
+    "        print(f'welcome to static method')\n",
+    "        \n",
+    "rama=Employee('rama','10','ceo')\n",
+    "rama.name\n",
+    "\n",
+    "string='laxman-10-chief'\n",
+    "laxman=Employee.clsmethod(string)\n",
+    "laxman.name\n",
+    "laxman.staticmethod()\n",
+    "Employee.staticmethod()\n",
+    "rama.staticmethod()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {
+    "tags": [
+     "closure"
+    ]
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'function'>\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "generator"
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#closure\n",
+    "def outerfun(num):\n",
+    "    \n",
+    "    def inner_fun():\n",
+    "        nonlocal num\n",
+    "        num+=1\n",
+    "        return num\n",
+    "    return inner_fun\n",
+    "    \n",
+    "    \n",
+    "inc=outerfun(10)\n",
+    "inc()\n",
+    "inc()\n",
+    "inc()\n",
+    "print(type(inc))\n",
+    "def gen_fun(num):\n",
+    "    \n",
+    "    while True:\n",
+    "        num+=1\n",
+    "        yield num+1\n",
+    "        \n",
+    "fun=gen_fun(10)\n",
+    "next(fun)\n",
+    "next(fun)\n",
+    "next(fun)\n",
+    "\n",
+    "fun.__iter__\n",
+    "type(fun)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "classmethod"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "#https://realpython.com/instance-class-and-static-methods-demystified/#delicious-pizza-factories-with-classmethod\n",
+    "class Pizza():\n",
+    "    def __init__(self,ingredients):\n",
+    "        self.ingredients=ingredients\n",
+    "        \n",
+    "    def __repr__(self):\n",
+    "        return f'Pizza(welcome to pizza {self.ingredients})'\n",
+    "    @classmethod\n",
+    "    def paneer_pizza(cls):\n",
+    "        return cls(['paneer','cheese'])\n",
+    "\n",
+    "    @classmethod\n",
+    "    def tomato_pizza(cls):\n",
+    "        return cls(['tomato','cheese'])\n",
+    "    \n",
+    "italian_pizza=Pizza(['peanuts','capsicum'])\n",
+    "tomato_pizza=Pizza.tomato_pizza()\n",
+    "tomato_pizza.ingredients\n",
+    "tomato_pizza\n",
+    "italian_pizza"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "generator"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "\n",
+    "\n",
+    "list1=(i for i in range(10))\n",
+    "\n",
+    "type(list1)\n",
+    "next(list1)\n",
+    "next(list1)\n",
+    "next(list1)\n",
+    "next(list1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "class",
+     "closure",
+     "generator"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# class vs closure vs generator for incremetor\n",
+    "\n",
+    "print('class...')\n",
+    "\n",
+    "class Inc():\n",
+    "    def __init__(self,num):\n",
+    "        self.num=num\n",
+    "    def __call__(self):\n",
+    "        self.num+=1\n",
+    "        return self.num\n",
+    "\n",
+    "inc=Inc(10)\n",
+    "print(inc())\n",
+    "print(inc())\n",
+    "\n",
+    "print('closure...')\n",
+    "\n",
+    "def outer_fun(num):\n",
+    "    \n",
+    "    def inner_fun():\n",
+    "        nonlocal num\n",
+    "        num+=1\n",
+    "        return num\n",
+    "    return inner_fun\n",
+    "\n",
+    "\n",
+    "\n",
+    "incfun=outer_fun(10)\n",
+    "print(incfun())\n",
+    "print(incfun())\n",
+    "\n",
+    "print('generator...')\n",
+    "\n",
+    "def gen_fun(num):\n",
+    "    \n",
+    "    while True:\n",
+    "        num+=1\n",
+    "        yield num\n",
+    "    \n",
+    "gen=gen_fun(10)\n",
+    "print(next(gen))\n",
+    "print(next(gen))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "[1, 2, 5, 3, 4, 9, 0]\n",
+      "[1, 2, 3, 5, 4, 9, 0]\n",
+      "[1, 2, 3, 4, 5, 9, 0]\n",
+      "[1, 2, 3, 4, 5, 0, 9]\n",
+      "[1, 2, 3, 4, 0, 5, 9]\n",
+      "[1, 2, 3, 0, 4, 5, 9]\n",
+      "[1, 2, 0, 3, 4, 5, 9]\n",
+      "[1, 0, 2, 3, 4, 5, 9]\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#selection algorithms\n",
+    "\n",
+    "\n",
+    "list1=[1,5,2,3,4,9,0]\n",
+    "\n",
+    "for i in range(len(list1)):\n",
+    "    for j in range(i+1,len(list1)):\n",
+    "        if list1[i]>list1[j]:\n",
+    "               list1[i],list1[j]=list1[j],list1[i]\n",
+    "               \n",
+    "print(list1)\n",
+    "\n",
+    "\n",
+    "#bubble sort algorithms\n",
+    "\n",
+    "\n",
+    "list1=[1,5,2,3,4,9,0]\n",
+    "\n",
+    "for i in range(len(list1)):\n",
+    "    for j in range(0,len(list1)-1-i):\n",
+    "        if list1[j]>list1[j+1]:\n",
+    "               list1[j],list1[j+1]=list1[j+1],list1[j]\n",
+    "               \n",
+    "print(list1)\n",
+    "\n",
+    "\n",
+    "\n",
+    "#insertion sort algorithms\n",
+    "\n",
+    "\n",
+    "list1=[1,5,2,3,4,9,0]\n",
+    "\n",
+    "for i in range(1,len(list1)):\n",
+    "    j=i\n",
+    "    while(j):\n",
+    "        if list1[j]<list1[j-1]:\n",
+    "            list1[j],list1[j-1]=list1[j-1],list1[j]\n",
+    "        else:\n",
+    "            break\n",
+    "        j=j-1\n",
+    "        print(list1)\n",
+    "               \n",
+    "print(list1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "inside sindex start: 0 end : 6\n",
+      "pivot is 0\n",
+      "[1, 5, 2, 3, 4, 9, 0]\n",
+      "returning pindex is 0\n",
+      "[0, 5, 2, 3, 4, 9, 1]\n",
+      "exiting sindex\n",
+      "pindex is 0\n",
+      "inside sindex start: 1 end : 6\n",
+      "pivot is 1\n",
+      "[0, 5, 2, 3, 4, 9, 1]\n",
+      "returning pindex is 1\n",
+      "[0, 1, 2, 3, 4, 9, 5]\n",
+      "exiting sindex\n",
+      "pindex is 1\n",
+      "inside sindex start: 2 end : 6\n",
+      "pivot is 5\n",
+      "[0, 1, 2, 3, 4, 9, 5]\n",
+      "pivot is 5 , len 4 and i is 2 and [0, 1, 2, 3, 4, 9, 5]\n",
+      "pivot is 5 , len 4 and i is 3 and [0, 1, 2, 3, 4, 9, 5]\n",
+      "pivot is 5 , len 4 and i is 4 and [0, 1, 2, 3, 4, 9, 5]\n",
+      "returning pindex is 5\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "exiting sindex\n",
+      "pindex is 5\n",
+      "inside sindex start: 2 end : 4\n",
+      "pivot is 4\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "pivot is 4 , len 2 and i is 2 and [0, 1, 2, 3, 4, 5, 9]\n",
+      "pivot is 4 , len 2 and i is 3 and [0, 1, 2, 3, 4, 5, 9]\n",
+      "returning pindex is 4\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "exiting sindex\n",
+      "pindex is 4\n",
+      "inside sindex start: 2 end : 3\n",
+      "pivot is 3\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "pivot is 3 , len 1 and i is 2 and [0, 1, 2, 3, 4, 5, 9]\n",
+      "returning pindex is 3\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n",
+      "exiting sindex\n",
+      "pindex is 3\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# quick sort algorithm\n",
+    "\n",
+    "list1=[1,5,2,3,4,9,0]\n",
+    "\n",
+    "\n",
+    "def sindex(list1,start,end):\n",
+    "    print(f'inside sindex start: {start} end : {end}')\n",
+    "    pivot=list1[end]\n",
+    "    print(f'pivot is {pivot}')\n",
+    "    pindex=start\n",
+    "    print(list1)\n",
+    "    for i in range(list1[start],list1[end]):\n",
+    "        if list1[i]<pivot:\n",
+    "            list1[i],list1[pindex]=list1[pindex],list1[i]\n",
+    "            pindex=pindex+1\n",
+    "        print(f'pivot is {pivot} , len {end-start} and i is {i} and {list1}')\n",
+    "    list1[pindex],list1[end]=list1[end],list1[pindex]\n",
+    "    print(f'returning pindex is {pindex}')\n",
+    "    print(list1)\n",
+    "    print(f'exiting sindex')\n",
+    "\n",
+    "    return pindex\n",
+    "    \n",
+    "\n",
+    "\n",
+    "def quick_sort(list1,start,end):\n",
+    "    \n",
+    "    if start<end:\n",
+    "        index=sindex(list1,start,end)\n",
+    "        print(f'pindex is {index}')\n",
+    "        quick_sort(list1,start,index-1)\n",
+    "        quick_sort(list1,index+1,end)\n",
+    "\n",
+    "        \n",
+    "\n",
+    "quick_sort(list1,0,6)               \n",
+    "print(list1)\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "list o to mid is [1, 5, 2]\n",
+      "list o to mid is [1]\n",
+      "list size 1 is [1]\n",
+      "list mid to end is [5, 2]\n",
+      "list size 2 is [5, 2]\n",
+      "list2 is [1]\n",
+      "list3 is [2, 5]\n",
+      "list4 is  [1, 2, 5]\n",
+      "list mid to end is [3, 4, 9, 0]\n",
+      "list o to mid is [3, 4]\n",
+      "list size 2 is [3, 4]\n",
+      "list mid to end is [9, 0]\n",
+      "list size 2 is [9, 0]\n",
+      "list2 is [3, 4]\n",
+      "list3 is [0, 9]\n",
+      "list4 is  [0, 3, 4, 9]\n",
+      "list2 is [1, 2, 5]\n",
+      "list3 is [0, 3, 4, 9]\n",
+      "list4 is  [0, 1, 2, 3, 4, 5, 9]\n",
+      "[0, 1, 2, 3, 4, 5, 9]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# merge sort algorithm\n",
+    "list1=[1,5,2,3,4,9,0]\n",
+    "\n",
+    "def merge_sort(list1):\n",
+    "    \n",
+    "    if len(list1)>2:\n",
+    "        mid=abs(int(len(list1)/2))\n",
+    "        print(f'list o to mid is {list1[0:mid]}')\n",
+    "        list2=merge_sort(list1[0:mid])\n",
+    "        print(f'list mid to end is {list1[mid::]}')\n",
+    "        list3=merge_sort(list1[mid::])\n",
+    "        list4=[]\n",
+    "        print(f'list2 is {list2}')\n",
+    "        print(f'list3 is {list3}')\n",
+    "        while list2 and list3:\n",
+    "            for i in range(len(list3)):\n",
+    "                if list2[i]<list3[i]:\n",
+    "                    list4.append(list2.pop(i))\n",
+    "                else:\n",
+    "                    list4.append(list3.pop(i))\n",
+    "                break\n",
+    "        if list2:\n",
+    "            list4.extend(list2)\n",
+    "        if list3:\n",
+    "            list4.extend(list3)\n",
+    "        print(f'list4 is  {list4}')\n",
+    "        return list4\n",
+    "        \n",
+    "        \n",
+    "    elif len(list1)==1:\n",
+    "        print(f'list size 1 is {list1}')\n",
+    "        return list1\n",
+    "    elif len(list1)==2:\n",
+    "        print(f'list size 2 is {list1}')\n",
+    "        if list1[0]>list1[1]:\n",
+    "            list1[0],list1[1]=list1[1],list1[0]\n",
+    "        return list1\n",
+    "\n",
+    "print(merge_sort(list1)  )             \n",
+    "#print(list1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 5, 2]\n",
+      "[3, 4, 9, 0]\n"
+     ]
+    }
+   ],
+   "source": [
+    "list1=[1,5,2,3,4,9,0]\n",
+    "print(f'{list1[0:3]}')\n",
+    "print(f'{list1[3::]}')"
+   ]
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Tags",
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
