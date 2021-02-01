@@ -8,7 +8,7 @@
   {
     "userId": 1,
     "title": "quis ut nam facilis et officia qui",
-    "completed": false
+    "cxmpleted": false
   },
   {
     "userId": 1,
@@ -21,7 +21,7 @@
     "completed": true
   },
   {
-    "userId": 1,
+    "userIdx: 1,
     "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
     "completed": false
   },
