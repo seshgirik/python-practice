@@ -1,10 +1,11 @@
 import requests
 
 url = 'http://10.10.226.39:32781/li'
-myobj = {'somekey': 'somevalue'}
+# myobj = {'somekey': 'somevalue'}
+headers = {"Content-type": "text/xml;charset=UTF-8", "SOAPAction": "\"http://mavenir.net/li/addTarget\"",
+           "User-Agent": "Jakarta Commons-HttpClient/3.1"}
 
-body = """{'SOAPAction': '"http://mavenir.net/li/addTarget"', 'Content-type': 'text/xml;charset=UTF-8', 'User-Agent': 'Jakarta Commons-HttpClient/3.1'}
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:li="http://mavenir.net/li/">
+body = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:li="http://mavenir.net/li/">
    <soapenv:Header/>
    <soapenv:Body>
         <li:addTarget>
@@ -17,6 +18,6 @@ body = """{'SOAPAction': '"http://mavenir.net/li/addTarget"', 'Content-type': 't
    </soapenv:Body>
 </soapenv:Envelope>"""
 
-x = requests.post(url, data = body)
+x = requests.post(url, headers=headers, data = body)
 print(body)
 print(x.text)
