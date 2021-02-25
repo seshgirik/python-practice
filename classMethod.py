@@ -2,6 +2,8 @@
 
 class Pizza:
 
+    default_size = 100
+
     def __init__(self, size, ingredients):
 
         self.size = size
@@ -15,7 +17,12 @@ class Pizza:
     @classmethod
     def italian(cls, size):
 
-        return cls(size, ingredients=['capsicum', 'onions', 'cheese'])
+        # return cls(size, ingredients=['capsicum', 'onions', 'cheese'])
+        return cls(size, ['capsicum', 'onions', 'cheese'])
+
+    @classmethod
+    def change_defsize(cls, size):
+        cls.default_size = size
 
     @classmethod
     def california(cls, value):
@@ -31,6 +38,9 @@ print(f'california pizza ingredients {california_pizza.ingredients} , size is {c
 print(paneer_pizza.size)
 print(paneer_pizza.area(paneer_pizza.size))
 print(f' italian pizza size: {italian_pizza.size} , area: {italian_pizza.area(italian_pizza.size)}, \n ingredients {italian_pizza.ingredients}')
+print(f'default size of pizza is {Pizza.default_size}')
+paneer_pizza.change_defsize(120)
+print(f'default size of pizza changed is {Pizza.default_size}')
 
 
 

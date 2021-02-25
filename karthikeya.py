@@ -1,3 +1,1 @@
-print('Hi sir')
-
-print({x})
+Quest = int(input("What type of operation do you want.M"))
