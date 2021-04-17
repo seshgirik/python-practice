@@ -1,1 +1,3 @@
-Quest = int(input("What type of operation do you want.M"))
+def function:
+    print("Hello")
+function()

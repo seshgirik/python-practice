@@ -1,21 +1,21 @@
-#
-# class A:
-#
-#     classvar1 = 'class variable'
-#
-#     def __init__(self):
-#         # self.classvar1 = 'instance variable in class A'
-#         pass
-#
-# class B(A):
-#     classvar1 = 'instance variable in class B'
-#     pass
-#
-# a= A()
-# b= B()
-#
-# print(b.classvar1)
-#
+
+class A:
+
+    classvar1 = 'class variable'
+
+    def __init__(self):
+        self.classvar1 = 'instance variable in class A'
+        pass
+
+class B(A):
+    classvar1 = 'instance variable in class B'
+    pass
+
+a= A()
+b= B()
+
+print(b.classvar1)
+
 class A:
 
     classvar1 = 'class variable'

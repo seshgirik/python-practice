@@ -1,5 +1,6 @@
 class Rectangle:
     def __init__(self, length, width):
+        print(f'rectangle constructor')
         self.length = length
         self.width = width
 
@@ -12,8 +13,10 @@ class Rectangle:
 
 class Square(Rectangle):
     def __init__(self, length):
+        print(f'class Square constructor')
         self.length = length
         super().__init__(length, length)
+    # pass
 
 
 # class Cube(Square):
@@ -22,6 +25,11 @@ class Square(Rectangle):
 #         super().__init__(length)
 
 class Cube(Square):
+    def __init__(self, val):
+        self.length = val
+        print(f'class cube constructor')
+        super().__init__(self.length)
+
     def surface_area(self):
         face_area = super().area()
         return face_area * 6
@@ -33,9 +41,9 @@ class Cube(Square):
 # This causes super() to start searching for a matching method (in this case, .area()) at one level above Square in the instance hierarchy, in this case Rectangle.
 
 
-sq = Square(4)
-print(sq.area())
-print(sq.perimeter())
+# sq = Square(4)
+# print(sq.area())
+# print(sq.perimeter())
 
 cube = Cube(3)
 print(cube.area())
